@@ -5,7 +5,6 @@ import { ArrowLeft, Check } from 'lucide-react';
 import EmojiInput from '@/components/EmojiInput';
 import FloatingEmoji from '@/components/FloatingEmoji';
 import BreathingGuide from '@/components/BreathingGuide';
-import AudioControls from '@/components/AudioControls';
 import WeatherEffects from '@/components/WeatherEffects';
 import { weatherOptions } from '@/data/weatherData';
 import type { FloatingEmoji as FloatingEmojiType, WeatherType } from '@/types/weather';
@@ -139,8 +138,8 @@ const WeatherScene = () => {
         </motion.div>
       )}
 
-      {/* Bottom Controls */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 p-4 pb-8 sm:pb-10 bg-gradient-to-t from-background/80 via-background/40 to-transparent">
+      {/* Bottom Controls - Centered */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-center p-4 pb-6 sm:pb-8">
         <EmojiInput 
           onSendEmoji={handleSendEmoji}
           disabled={emojis.length >= MAX_EMOJIS}
@@ -152,9 +151,6 @@ const WeatherScene = () => {
         isVisible={isBreathing}
         onToggle={() => setIsBreathing(!isBreathing)}
       />
-
-      {/* Audio Controls */}
-      <AudioControls weatherType={weather.ambientSound} />
     </div>
   );
 };
