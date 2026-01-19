@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Quicksand', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+        display: ['Noto Sans TC', 'Quicksand', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,28 +61,42 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        weather: {
+          anxiety: "hsl(var(--weather-anxiety))",
+          sadness: "hsl(var(--weather-sadness))",
+          anger: "hsl(var(--weather-anger))",
+          confused: "hsl(var(--weather-confused))",
+          tired: "hsl(var(--weather-tired))",
+          lonely: "hsl(var(--weather-lonely))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        glow: "var(--shadow-glow)",
+        card: "var(--shadow-card)",
+      },
+      backgroundImage: {
+        'gradient-dawn': 'var(--gradient-dawn)',
+        'gradient-rain': 'var(--gradient-rain)',
+        'gradient-storm': 'var(--gradient-storm)',
+        'gradient-sunset': 'var(--gradient-sunset)',
+        'gradient-fog': 'var(--gradient-fog)',
+        'gradient-snow': 'var(--gradient-snow)',
+        'gradient-night': 'var(--gradient-night)',
+      },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
