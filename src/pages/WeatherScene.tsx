@@ -138,12 +138,14 @@ const WeatherScene = () => {
         </motion.div>
       )}
 
-      {/* Bottom Controls - Centered */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-center p-4 pb-6 sm:pb-8">
-        <EmojiInput 
-          onSendEmoji={handleSendEmoji}
-          disabled={emojis.length >= MAX_EMOJIS}
-        />
+      {/* Emoji Input - Centered on screen */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+        <div className="pointer-events-auto">
+          <EmojiInput 
+            onSendEmoji={handleSendEmoji}
+            disabled={emojis.length >= MAX_EMOJIS}
+          />
+        </div>
       </div>
 
       {/* Breathing Guide */}
