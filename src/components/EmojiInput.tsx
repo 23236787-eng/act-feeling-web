@@ -51,12 +51,36 @@ const EmojiInput = ({
       <div className="flex flex-col gap-1.5 mb-3">
         {/* First Row - Recent or Common */}
         <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
-          {firstRow.map((emoji, index) => {})}
+          {firstRow.map((emoji, index) => (
+            <motion.button
+              key={`first-${emoji}-${index}`}
+              type="button"
+              onClick={() => handleEmojiClick(emoji)}
+              disabled={disabled}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-card/60 backdrop-blur-sm border border-border/30 hover:bg-card/80 hover:border-primary/30 transition-all duration-200 text-lg disabled:opacity-50"
+            >
+              {emoji}
+            </motion.button>
+          ))}
         </div>
         
         {/* Second Row */}
         <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
-          {secondRow.map((emoji, index) => {})}
+          {secondRow.map((emoji, index) => (
+            <motion.button
+              key={`second-${emoji}-${index}`}
+              type="button"
+              onClick={() => handleEmojiClick(emoji)}
+              disabled={disabled}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-card/60 backdrop-blur-sm border border-border/30 hover:bg-card/80 hover:border-primary/30 transition-all duration-200 text-lg disabled:opacity-50"
+            >
+              {emoji}
+            </motion.button>
+          ))}
         </div>
       </div>
 
