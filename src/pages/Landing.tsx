@@ -52,8 +52,9 @@ const Landing = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <p className="text-base font-medium">
-            你所抵抗的，會持續存在；你所接納的，會悄然改變 ----《接納》
+          <p className="text-base font-medium">你所抵抗的，會持續存在；你所接納的，會悄然改變 ----《接納》</p>
+
+          <p>
             讓每一個感受，都像一縷風或一片雲，擁有穿過你整個內在天空的自由。你不必留住它，也不必趕走它，只需看著它，來去。
           </p>
 
