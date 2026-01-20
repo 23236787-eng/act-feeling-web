@@ -144,6 +144,7 @@ const WeatherScene = () => {
           <EmojiInput 
             onSendEmoji={handleSendEmoji}
             disabled={emojis.length >= MAX_EMOJIS}
+            recentEmojis={emojis.map(e => e.emoji)}
           />
         </div>
       </div>

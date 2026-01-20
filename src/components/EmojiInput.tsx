@@ -6,9 +6,10 @@ import { commonEmojis } from '@/data/weatherData';
 interface EmojiInputProps {
   onSendEmoji: (emoji: string) => void;
   disabled?: boolean;
+  recentEmojis?: string[];
 }
 
-const EmojiInput = ({ onSendEmoji, disabled }: EmojiInputProps) => {
+const EmojiInput = ({ onSendEmoji, disabled, recentEmojis = [] }: EmojiInputProps) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = useCallback((e?: React.FormEvent) => {
@@ -30,6 +31,16 @@ const EmojiInput = ({ onSendEmoji, disabled }: EmojiInputProps) => {
     }
   }, [handleSubmit]);
 
+  // Combine recent emojis (unique, max 8) with common emojis
+  const uniqueRecent = [...new Set(recentEmojis)].slice(0, 8);
+  const displayEmojis = uniqueRecent.length > 0 
+    ? [...uniqueRecent, ...commonEmojis.filter(e => !uniqueRecent.includes(e))]
+    : commonEmojis;
+
+  // Split into two rows
+  const firstRow = displayEmojis.slice(0, 8);
+  const secondRow = displayEmojis.slice(8, 16);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -37,23 +48,45 @@ const EmojiInput = ({ onSendEmoji, disabled }: EmojiInputProps) => {
       transition={{ delay: 0.5, duration: 0.6 }}
       className="w-full max-w-sm px-4"
     >
-      {/* Emoji Tray */}
-      <div className="flex justify-center gap-1.5 sm:gap-2 mb-3 flex-wrap">
-        {commonEmojis.map((emoji, index) => (
-          <motion.button
-            key={emoji}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7 + index * 0.05 }}
-            whileHover={{ scale: 1.2, y: -3 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => handleEmojiClick(emoji)}
-            disabled={disabled}
-            className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-lg sm:text-xl rounded-full bg-card/70 backdrop-blur-sm border border-border/40 shadow-soft hover:shadow-card transition-all duration-200 disabled:opacity-50"
-          >
-            {emoji}
-          </motion.button>
-        ))}
+      {/* Emoji Tray - Two Rows */}
+      <div className="flex flex-col gap-1.5 mb-3">
+        {/* First Row - Recent or Common */}
+        <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
+          {firstRow.map((emoji, index) => (
+            <motion.button
+              key={`row1-${emoji}-${index}`}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.7 + index * 0.03 }}
+              whileHover={{ scale: 1.2, y: -3 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => handleEmojiClick(emoji)}
+              disabled={disabled}
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-lg sm:text-xl rounded-full bg-card/70 backdrop-blur-sm border border-border/40 shadow-soft hover:shadow-card transition-all duration-200 disabled:opacity-50"
+            >
+              {emoji}
+            </motion.button>
+          ))}
+        </div>
+        
+        {/* Second Row */}
+        <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
+          {secondRow.map((emoji, index) => (
+            <motion.button
+              key={`row2-${emoji}-${index}`}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.85 + index * 0.03 }}
+              whileHover={{ scale: 1.2, y: -3 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => handleEmojiClick(emoji)}
+              disabled={disabled}
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-lg sm:text-xl rounded-full bg-card/70 backdrop-blur-sm border border-border/40 shadow-soft hover:shadow-card transition-all duration-200 disabled:opacity-50"
+            >
+              {emoji}
+            </motion.button>
+          ))}
+        </div>
       </div>
 
       {/* Input Field */}
