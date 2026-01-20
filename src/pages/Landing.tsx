@@ -19,7 +19,7 @@ const Landing = () => {
     >
       {/* Background texture */}
       <div className="absolute inset-0 opacity-10 bg-[url('/placeholder.svg')] bg-cover" />
-      
+
       {/* Decorative elements */}
       <div className="absolute top-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl" />
@@ -53,9 +53,10 @@ const Landing = () => {
           transition={{ delay: 0.4 }}
         >
           <p className="text-base font-medium">
-            如果困擾你的話語，可以換一個視角重新聆聽？
+            你所抵抗的，會持續存在；你所接納的，會悄然改變 ----《接納》
+            讓每一個感受，都像一縷風或一片雲，擁有穿過你整個內在天空的自由。你不必留住它，也不必趕走它，只需看著它，來去。
           </p>
-          
+
           <p>
             這是一個專為飲食障礙康復者設計的數位支持空間。基於「接納與承諾療法」（ACT），我們協助您將日常生活中的負面思維、固化信念和自我批判，轉化為更靈活、更有助於價值生活的視角。
           </p>
@@ -80,9 +81,9 @@ const Landing = () => {
             </p>
             <p>
               如需支持，請訪問：
-              <a 
-                href="https://www.heda-hk.org" 
-                target="_blank" 
+              <a
+                href="https://www.heda-hk.org"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
                 onClick={(e) => e.stopPropagation()}
