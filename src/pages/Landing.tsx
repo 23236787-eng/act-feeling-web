@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import landingIllustration from "@/assets/landing-illustration.png";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -25,15 +26,15 @@ const Landing = () => {
       <div className="absolute bottom-20 left-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl" />
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12 max-w-2xl mx-auto">
-        {/* Logo/Image placeholder */}
-        <motion.div
-          className="w-24 h-24 mb-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg"
+        {/* Illustration */}
+        <motion.img
+          src={landingIllustration}
+          alt="How are you? I'm fine. Thank you."
+          className="w-48 h-auto mb-8"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-        >
-          <span className="text-4xl">🌱</span>
-        </motion.div>
+        />
 
         {/* Title */}
         <motion.h1
